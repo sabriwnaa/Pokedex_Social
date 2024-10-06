@@ -25,3 +25,58 @@
 
 }
 
+.perfil {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.inicial {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #3e8e41;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    margin-right: 15px;
+}
+
+.listagem {
+    display: flex;
+    flex-wrap: wrap;
+    color: #4e0b0b;
+}
+
+.pokemon {
+    border: 1px solid #ddd;
+    padding: 15px;
+    margin: 10px;
+    width: 200px;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+
+}
+
+.pokemon h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
+.pokemon p {
+    margin: 5px 0;
+}
+
+/* Estilos para o botão de logout */
+.logout-btn {
+    text-decoration: none;
+    background-color: #f44336;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-top: 20px;
+    display: inline-block;
+}
+
