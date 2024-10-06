@@ -72,7 +72,7 @@ $resultado = $stmt->get_result();
 <body>
     <div class='container'>
         <div class='header'>
-            <h1>A Pokedex Social</h1>
+            <h1>A Pokedex Social</h1> <a href="logout.php">Logout</a>
         </div>
 
         <div class='main'>
