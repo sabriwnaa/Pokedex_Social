@@ -7,7 +7,7 @@ if(!isset($_POST['botao'])){
 $email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
 $senha = htmlspecialchars($_POST['senha']);
 
-$db = new mysqli("localhost","root","","votacao");
+$db = new mysqli("localhost","root","","pokemons_dataset");
 
 $stmt = $db->prepare("select * from pessoa where email = ?");
 $stmt->bind_param("s",$email);

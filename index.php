@@ -28,7 +28,7 @@
                 </div>
                 <div class='grupo_botao'>
                     <input type='submit' name='botao' class='botao' value='Entrar'>
-                    <a href='form_add_pessoa.php'>Ainda não está cadastrado? Cadastre-se</a>
+                    <a href='form_add_treinador.php'>Ainda não está cadastrado? Cadastre-se</a>
                 </div>
                 
               
