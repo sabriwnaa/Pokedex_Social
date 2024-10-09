@@ -1,8 +1,8 @@
 <?php
 session_start();
-var_dump($_SESSION['id']);
 if(!isset($_SESSION['id'])){
     header("location: index.php");
+    exit;
 }
 
 
@@ -10,7 +10,7 @@ $id_pessoa = $_SESSION['id'];
 
     $db = new mysqli("localhost", "root", "", "pokemons_dataset");
 
-    $stmt = $db->prepare("SELECT email FROM pessoa WHERE id = ?");
+    $stmt = $db->prepare("SELECT email FROM pessoa WHERE id_pessoa = ?");
     $stmt->bind_param("i", $id_pessoa);
     $stmt->execute();
     $resultado = $stmt->get_result();
@@ -25,7 +25,7 @@ $id_pessoa = $_SESSION['id'];
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Votação para liderança da turma 3TI</title>
+    <title>A pokedex Social</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
 </head>

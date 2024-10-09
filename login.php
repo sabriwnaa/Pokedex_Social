@@ -37,7 +37,7 @@ if($resultado->num_rows==0){
         // Inicia sessão
         session_start();
         // Cria uma variável de sessão
-        $_SESSION['id'] = $pessoa['id'];
+        $_SESSION['id'] = $pessoa['id_pessoa'];
         //dá para adicionar qualquer variavel e informação dentro da session, que é um array qualquer
         //_SESSION['email'] = $pessoa['email'] -> se quiser exibir o email no cabecalho
         //Redireciona para área restrita
