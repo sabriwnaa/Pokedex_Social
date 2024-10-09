@@ -37,8 +37,7 @@ $id_pessoa = $_SESSION['id'];
 
         <div class='main' style='flex-direction:column;'>
             <div class='cabecalhoOpcoes'>  
-                <div class='meuPerfil'>S</div>
-                <a class='botao' href='minha_colecao.php'>Minha coleção</a>
+                <a class='meuPerfil' href='minha_colecao.php'>S</a>
                 <a class='botao' href='todos_treinadores.php'>Todos os treinadores</a>
 
           
