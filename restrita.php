@@ -72,16 +72,14 @@ $resultado = $stmt->get_result();
 <body>
     <div class='container'>
         <div class='header'>
-            <h1>A Pokedex Social</h1>
+        <?php
+        include 'header.php'; // Inclui o cabeçalho
+        ?>
+
         </div>
 
         <div class='main'>
-            <div class='cabecalhoOpcoes'>  
-            <a class='meuPerfil' href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>'>S</a>
-
-                <a class='botao' href='todos_treinadores.php'>Todos os treinadores</a>
-
-                <!-- Dropdown para as opções de ordenação -->
+            
                 <div class="dropdown">
                     <button class="dropbtn">Ordenar Pokémons</button>
                     <div class="dropdown-content">
@@ -91,7 +89,6 @@ $resultado = $stmt->get_result();
                         <a href="?sort_column=Defense&sort_order=DESC">Ordenar Defesa Decrescente</a>
                     </div>
                 </div>
-            </div>
 
             <div class='listagem'>
                 <?php while ($pokemon = $resultado->fetch_assoc()) { ?>
