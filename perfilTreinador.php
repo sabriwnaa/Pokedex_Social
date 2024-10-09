@@ -24,7 +24,6 @@ $pessoa = $emailResult->fetch_assoc();
 $email_pessoa = $pessoa['email']; // Armazena o email
 
 
-
 // Busca os Pokémons da coleção da pessoa
 $query = "SELECT p.* FROM pokemon p 
            JOIN pessoa_pokemon pp 

@@ -12,11 +12,11 @@
             <h1>A Pokedex Social</h1>
             <div class='perfil'>
                 <?php 
-                $email_pessoa = $_SESSION['email']; 
-                $inicial = strtoupper($email_pessoa[0]);
+                $email_cabecalho = $_SESSION['email']; 
+                $inicial = strtoupper($email_cabecalho[0]);
                 ?>
                 <a href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>' class='inicial'><?php echo $inicial; ?></a>
-                <p><?php echo $email_pessoa; ?></p>
+                <p><?php echo $email_cabecalho; ?></p>
             </div>
             <a class='logout-btn' href='logout.php'>Sair</a>
             <a class='botao' href='todos_treinadores.php'>Todos os treinadores</a>
