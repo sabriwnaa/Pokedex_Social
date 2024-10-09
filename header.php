@@ -9,7 +9,7 @@
 </head>
 <body>
         <div class='header'>
-            <h1>A Pokedex Social</h1>
+            <a href='restrita.php'>A Pokedex Social</a>
             <div class='perfil'>
                 <?php 
                 $email_cabecalho = $_SESSION['email']; 

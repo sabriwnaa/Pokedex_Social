@@ -4,17 +4,20 @@
         $email = filter_var($_POST['email'],FILTER_SANITIZE_EMAIL);
         $senha = htmlspecialchars($_POST['senha']);
       
-        $db = new mysqli('localhost','root','','pokemons_dataset'); 
-        
-        $password_hash = password_hash($_POST['senha'],PASSWORD_BCRYPT);
-
-         $stmt = $db->prepare("insert into pessoa (email,senha) values (?,?)");
-        
-         $stmt->bind_param("ss",$email,$password_hash);
-
-        $stmt->execute();
-
-        header("location: index.php");
+        if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            echo "Por favor, insira um endereço de e-mail válido.";
+        } else {
+            $db = new mysqli('localhost', 'root', '', 'pokemons_dataset');
+    
+            $password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
+    
+            $stmt = $db->prepare("INSERT INTO pessoa (email, senha) VALUES (?, ?)");
+            $stmt->bind_param("ss", $email, $password_hash);
+    
+            $stmt->execute();
+    
+            header("Location: index.php");
+        }
     }   
 ?>
 <!DOCTYPE html>
