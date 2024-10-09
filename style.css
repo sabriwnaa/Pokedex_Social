@@ -1,0 +1,26 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    background-color: #4e0b0b;
+    color: aliceblue;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    font-family: 'Poppins', sans-serif;
+}
+
+.meuPerfil{
+    border-radius: 100%;
+    background-color: aliceblue;
+    width: 50px;
+    height: 50px;
+    color: #4e0b0b;
+
+}
