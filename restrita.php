@@ -77,7 +77,8 @@ $resultado = $stmt->get_result();
 
         <div class='main'>
             <div class='cabecalhoOpcoes'>  
-                <a class='meuPerfil' href='minha_colecao.php'>S</a>
+            <a class='meuPerfil' href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>'>S</a>
+
                 <a class='botao' href='todos_treinadores.php'>Todos os treinadores</a>
 
                 <!-- Dropdown para as opções de ordenação -->

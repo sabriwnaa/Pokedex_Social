@@ -1,12 +1,15 @@
 <?php
-
 session_start();
 if (!isset($_SESSION['id'])) {
-    header('Location: restrita.php');
+    header('Location: index.php');
     exit;
 }
 
 $id_pessoa = $_GET['idTreinador'];
+
+if($_SESSION['id'] == $id_pessoa){
+    $isMyProfile = true;
+}
 
 $db = new mysqli('localhost', 'root', '', 'pokemons_dataset');
 
