@@ -7,7 +7,6 @@ if (!isset($_SESSION['id'])) {
 }
 
 $db = new mysqli("localhost", "root", "", "pokemons_dataset");
-$id_pessoa = $_SESSION['id'];
 
 // Inicializar variável de pesquisa
 $pesquisar = "";
@@ -41,6 +40,7 @@ $resultado = $db->query($sql);
 <?php
 if ($resultado->num_rows > 0) {
     while($row = $resultado->fetch_assoc()) {
+        $id_pessoa = $row['id_pessoa'];
         echo "<a href='perfilTreinador.php?idTreinador={$row["id_pessoa"]}'> Email: " . $row["email"] . "</a> <br>";
     }
 } else {
