@@ -6,7 +6,7 @@
 
 .container{
     width: 100vw;
-    height: 100vh;
+    min-height: 100vh;
     background-color: #4e0b0b;
     color: aliceblue;
     display: flex;
@@ -24,3 +24,4 @@
     color: #4e0b0b;
 
 }
+
