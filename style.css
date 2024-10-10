@@ -87,16 +87,43 @@ header{
     color: #fbbd00; 
 }
 
+.inicial {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: #004bfb; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 24px;
+    font-weight: bold;
+    border: 3px solid #ffffff;
+    margin: 0px 10px;
+}
+
+.botaoAmarelo {
+    background-color:#edda00;
+    color: #ffffff;
+    border: 2px solid #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.titulo{
+    font-size: 40px;
+}
+
 /* Header */
 .header {
     width: 100%;
     padding: 20px;
-    background-color: #000000; /* Preto */
+    background-color:#b0101d; 
     color: #ffffff;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    font-size: 24px;
+    font-size: 20px;
 }
 
 .header a {
@@ -105,25 +132,15 @@ header{
     font-weight: 600;
 }
 
-/* Perfil */
 .perfil {
     display: flex;
     align-items: center;
 }
 
-.inicial {
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background-color: #fbbd00; /* Amarelo */
-    color: #4e0b0b;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-size: 24px;
-    font-weight: bold;
-    margin-right: 15px;
+.main{
+    
 }
+
 
 
 .comando {

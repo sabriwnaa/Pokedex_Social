@@ -106,9 +106,6 @@ $resultado = $stmt->get_result();
             </div>
         </div>
 
-        <div class='footer'>
-            <a class='botao' style='text-decoration: none;' href='logout.php'>Sair</a>
-        </div>
     </div>
 </body>
 </html>

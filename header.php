@@ -9,7 +9,6 @@
 </head>
 <body>
         <div class='header'>
-            <a href='restrita.php'>A Pokedex Social</a>
             <div class='perfil'>
                 <?php 
                 $email_cabecalho = $_SESSION['email']; 
@@ -18,8 +17,10 @@
                 <a href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>' class='inicial'><?php echo $inicial; ?></a>
                 <p><?php echo $email_cabecalho; ?></p>
             </div>
+            <a class='titulo' href='restrita.php'>A Pokedex Social</a>
+            <a class='botaoAmarelo' href='todos_treinadores.php'>Todos os treinadores</a>
+            
             <a class='botaoVermelho' href='logout.php'>Sair</a>
-            <a class='botao' href='todos_treinadores.php'>Todos os treinadores</a>
         </div>
     
 </body>
