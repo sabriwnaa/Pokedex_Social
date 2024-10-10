@@ -32,12 +32,15 @@
 </head>
 <body>
     <div class='container'>
-    <div class='header'>
+    <header>
             <h1>A Pokedex Social</h1>
+    </header>
+    <div class='borda'>
+            <div class='containerElementos'>
+            <div class='bolinha'></div><div class='bolinha'></div>
+          
             </div>
-        <div class='box'>
-            
-
+          <div class='box'>
             <form method='post' action='form_add_treinador.php'>
                 <h1 class='comando'>Cadastrar-se</h1>
                 <div class='insercao'>
@@ -50,12 +53,13 @@
                     <input type='password' name='senha' class='entrada' require>
                 </div>
                 <div class='grupo_botao'>
-                    <input type='submit' name='botao' class='botao' value='Cadastrar'>
+                    <input type='submit' name='botao' class='botaoVermelho' value='Cadastrar'>
                     <a href='index.php'>Voltar</a>
                 </div>
             </form>
             
-        </div>
+            </div>
+            </div>
         <div class='footer'>
         <h3>Sabrina Hahn Melo, Gabriel Klafke Teixeira e Ana Ariel Avila Escobar - 3TI - Programação III</h3>
         </div>
