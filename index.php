@@ -10,30 +10,38 @@
 </head>
 <body>
     <div class='container'>
-        <div class='header'>
+        <header>
             <h1>A Pokedex Social</h1> 
+        </header>
+        
+        <div class='borda'>
+            <div class='containerElementos'>
+            <div class='bolinha'></div><div class='bolinha'></div>
+          
             </div>
-        <div class='box'>
+          <div class='box'>
             
-            <form action='login.php' method='post'>
-                <h2 class='comando'>Entre na sua conta</h2>
-                <div class='insercao'>
-                    <label>E-mail:</label>
-                    <input type='text' name='email' class='entrada' require>
+                <form action='login.php' method='post'>
+                    <h2 class='comando'>Entre na sua conta</h2>
+                    <div class='insercao'>
+                        <label>E-mail</label>
+                        <input type='text' name='email' class='entrada' require>
+                    
+                    </div>
+                    <div class='insercao'>
+                        <label>Senha</label>
+                        <input type='password' name='senha' class='entrada' require>
+                    </div>
+                    <div class='grupo_botao'>
+                        <input type='submit' name='botao' class='botaoVermelho' value='Entrar'>
+                        <a class='botaoAmarelo' href='form_add_treinador.php'>Cadastre-se</a>
+                    </div>
+                    
                 
-                </div>
-                <div class='insercao'>
-                    <label>Senha:</label>
-                    <input type='password' name='senha' class='entrada' require>
-                </div>
-                <div class='grupo_botao'>
-                    <input type='submit' name='botao' class='botao' value='Entrar'>
-                    <a href='form_add_treinador.php'>Ainda não está cadastrado? Cadastre-se</a>
-                </div>
-                
-              
-            </form>
+                </form>
+            </div>
         </div>
+        
 
         <div class='footer'>
             <h3>Sabrina Hahn Melo, Gabriel Klafke Teixeira e Ana Ariel Avila Escobar - 3TI - Programação III</h3>
