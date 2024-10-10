@@ -7,6 +7,7 @@ if (!isset($_SESSION['id'])) {
 
 $id_pessoa = $_GET['idTreinador'];
 
+$isMyProfile = false;
 if ($_SESSION['id'] == $id_pessoa) {
     $isMyProfile = true;
 }
@@ -51,7 +52,10 @@ $resultado = $stmt->get_result();
         </div>
 
         <div class='main'>
-            <h2>Email: <?php echo ($email_pessoa); ?></h2>
+            <?php if($isMyProfile){
+                echo "<h2>Meu perfil</h2>";
+                } ?>
+            <h2><?php echo ($email_pessoa); ?></h2>
             <h1>Coleção de Pokémons</h1>
             
 
@@ -65,6 +69,9 @@ $resultado = $stmt->get_result();
                         <p><strong>Número da Pokedex:</strong> <?php echo htmlspecialchars($pokemon['Pokedex_number']); ?></p>
                         <p><strong>Tipo:</strong> <?php echo htmlspecialchars($pokemon['Type']); ?></p>
                         <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Sim' : 'Não'; ?></p>
+                        <?php if($isMyProfile){
+                            echo "<a href='tirarPokemon.php?pokedex_number={$pokemon["Pokedex_number"]}'>Excluir Pokemon da minha coleção</a>";
+                        } ?>
                     </div>
                 <?php } ?>
             </div>
