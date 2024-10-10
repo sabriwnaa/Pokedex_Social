@@ -14,7 +14,6 @@ if ($_SESSION['id'] == $id_pessoa) {
 
 $db = new mysqli("localhost", "root", "", "pokemons_dataset");
 
-
 // Busca o email da pessoa
 $emailQuery = "SELECT email FROM pessoa WHERE id_pessoa = ?";
 $emailStmt = $db->prepare($emailQuery);
@@ -23,7 +22,6 @@ $emailStmt->execute();
 $emailResult = $emailStmt->get_result();
 $pessoa = $emailResult->fetch_assoc();
 $email_pessoa = $pessoa['email']; // Armazena o email
-
 
 // Busca os Pokémons da coleção da pessoa
 $query = "SELECT p.* FROM pokemon p 
@@ -34,6 +32,7 @@ $stmt = $db->prepare($query);
 $stmt->bind_param("i", $id_pessoa);
 $stmt->execute();
 $resultado = $stmt->get_result();
+$pokemonCount = $resultado->num_rows; // Conta quantos Pokémons foram encontrados
 ?>
 
 <!DOCTYPE html>
@@ -54,27 +53,30 @@ $resultado = $stmt->get_result();
         <div class='main'>
             <?php if($isMyProfile){
                 echo "<h2>Meu perfil</h2>";
-                } ?>
+            } ?>
             <h2><?php echo ($email_pessoa); ?></h2>
             <h1>Coleção de Pokémons</h1>
-            
 
-            <!-- Listagem dos Pokémons -->
             <div class='listagem'>
-                <?php while ($pokemon = $resultado->fetch_assoc()) { ?>
-                    <div class='pokemon'>
-                        <h2><?php echo htmlspecialchars($pokemon['Name']); ?></h2>
-                        <p><strong>Ataque:</strong> <?php echo htmlspecialchars($pokemon['Attack']); ?></p>
-                        <p><strong>Defesa:</strong> <?php echo htmlspecialchars($pokemon['Defense']); ?></p>
-                        <p><strong>Número da Pokedex:</strong> <?php echo htmlspecialchars($pokemon['Pokedex_number']); ?></p>
-                        <p><strong>Tipo:</strong> <?php echo htmlspecialchars($pokemon['Type']); ?></p>
-                        <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Sim' : 'Não'; ?></p>
-                        <?php if($isMyProfile){
-                            echo "<a href='tirarPokemon.php?pokedex_number={$pokemon["Pokedex_number"]}'>Excluir Pokemon da minha coleção</a>";
-                        } ?>
-                    </div>
+                <?php if ($pokemonCount > 0) { // Verifica se a pessoa tem Pokémons ?>
+                    <?php while ($pokemon = $resultado->fetch_assoc()) { ?>
+                        <div class='pokemon'>
+                            <h2><?php echo htmlspecialchars($pokemon['Name']); ?></h2>
+                            <p><strong>Ataque:</strong> <?php echo htmlspecialchars($pokemon['Attack']); ?></p>
+                            <p><strong>Defesa:</strong> <?php echo htmlspecialchars($pokemon['Defense']); ?></p>
+                            <p><strong>Número da Pokedex:</strong> <?php echo htmlspecialchars($pokemon['Pokedex_number']); ?></p>
+                            <p><strong>Tipo:</strong> <?php echo htmlspecialchars($pokemon['Type']); ?></p>
+                            <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Sim' : 'Não'; ?></p>
+                            <?php if($isMyProfile){
+                                echo "<a href='tirarPokemon.php?pokedex_number={$pokemon["Pokedex_number"]}'>Excluir Pokemon da minha coleção</a>";
+                            } ?>
+                        </div>
+                    <?php } ?>
+                <?php } else { // Se não houver Pokémons ?>
+                    <h2>Este usuário ainda não tem Pokémons em sua coleção.</h2>
                 <?php } ?>
             </div>
+            
         </div>
 
         <div class='footer'>

@@ -1,14 +1,16 @@
-*{
+/* Reset */
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
 }
 
-.container{
+/* Container principal */
+.container {
     width: 100vw;
     min-height: 100vh;
-    background-color: #4e0b0b;
-    color: aliceblue;
+    background-color: #4e0b0b; /* Vermelho escuro */
+    color: #ffffff; /* Fonte branca */
     display: flex;
     justify-content: center;
     align-items: center;
@@ -16,26 +18,36 @@
     font-family: 'Poppins', sans-serif;
 }
 
-.meuPerfil{
-    border-radius: 100%;
-    background-color: aliceblue;
-    width: 50px;
-    height: 50px;
-    color: #4e0b0b;
-
+/* Header */
+.header {
+    width: 100%;
+    padding: 20px;
+    background-color: #000000; /* Preto */
+    color: #ffffff;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 24px;
 }
 
+.header a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+/* Perfil */
 .perfil {
     display: flex;
     align-items: center;
-    margin-bottom: 20px;
 }
+
 .inicial {
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: #3e8e41;
-    color: white;
+    background-color: #fbbd00; /* Amarelo */
+    color: #4e0b0b;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -44,39 +56,122 @@
     margin-right: 15px;
 }
 
+.logout-btn, .botao {
+    background-color: #f44336; /* Vermelho */
+    color: #ffffff;
+    padding: 10px 20px;
+    border-radius: 5px;
+    text-decoration: none;
+    margin-left: 15px;
+    font-size: 14px;
+}
+
+.box {
+    width: 350px;
+    padding: 20px;
+    background-color: #000000; /* Preto */
+    border-radius: 10px;
+    text-align: center;
+}
+
+.comando {
+    font-size: 24px;
+    margin-bottom: 15px;
+}
+
+/* Inputs e formulário */
+.insercao {
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.insercao label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+.entrada {
+    width: 100%;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    margin-bottom: 10px;
+}
+
+.grupo_botao {
+    margin-top: 20px;
+}
+
+.grupo_botao a {
+    display: block;
+    margin-top: 10px;
+    text-decoration: none;
+    color: #fbbd00; /* Amarelo */
+}
+
+/* Listagem e exibição de Pokémons */
 .listagem {
     display: flex;
     flex-wrap: wrap;
-    color: #4e0b0b;
+    justify-content: center;
+    margin-top: 20px;
 }
 
 .pokemon {
-    border: 1px solid #ddd;
+    border: 1px solid #fbbd00;
     padding: 15px;
     margin: 10px;
     width: 200px;
     border-radius: 10px;
     background-color: #f9f9f9;
-
+    text-align: left;
 }
 
 .pokemon h2 {
     font-size: 20px;
     margin-bottom: 10px;
+    color: #4e0b0b;
 }
 
 .pokemon p {
     margin: 5px 0;
+    color: #4e0b0b;
 }
 
-/* Estilos para o botão de logout */
-.logout-btn {
-    text-decoration: none;
-    background-color: #f44336;
-    color: white;
-    padding: 10px 20px;
-    border-radius: 5px;
-    margin-top: 20px;
+/* Footer */
+.footer {
+    width: 100%;
+    text-align: center;
+    margin-top: 30px;
+    padding: 10px 0;
+    background-color: #000000; /* Preto */
+    color: #ffffff;
+    font-size: 14px;
+}
+
+/* Estilo Dropdown */
+.dropdown {
+    position: relative;
     display: inline-block;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #fbbd00; /* Amarelo */
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #4e0b0b; /* Vermelho */
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
 }
 
