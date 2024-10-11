@@ -14,7 +14,7 @@
                 $email_cabecalho = $_SESSION['email']; 
                 $inicial = strtoupper($email_cabecalho[0]);
                 ?>
-                <a href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>' class='inicial'><?php echo $inicial; ?></a>
+                <a href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>' class='inicial azul'><?php echo $inicial; ?></a>
                 <p><?php echo $email_cabecalho; ?></p>
             </div>
             <a class='titulo' href='restrita.php'>A Pokedex Social</a>

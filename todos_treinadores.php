@@ -31,35 +31,38 @@ $resultado = $db->query($sql);
     <title>Todos os Treinadores</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-
 </head>
 <body>
     <div class='container'>
-        <div class='header'>
-            <?php include 'header.php'?>
-        </div>
-
+        <?php include 'header.php'?>
+       
         <div class='main'>
-        <h1>Todos os Treinadores</h1>
-        <form action="todos_treinadores.php" method="post">
-            <input type="text" name="pesquisar" class="pesquisar" placeholder="Pesquisar" value="<?php echo htmlspecialchars($pesquisar); ?>">
-            <button type="submit">Filtrar</button>
-        </form>
-
-        <?php
-        if ($resultado->num_rows > 0) {
-            while($row = $resultado->fetch_assoc()) {
-                $id_pessoa = $row['id_pessoa'];
-                echo "<a href='perfilTreinador.php?idTreinador={$row["id_pessoa"]}'> Email: " . $row["email"] . "</a> <br>";
-            }
-        } else {
-            echo "Nenhum resultado encontrado.";
-        }
-        ?>
+            <div class='containerBotao'>
+                <h2>Todos os Treinadores</h2>
+                <form action="todos_treinadores.php" method="post">
+                    <input type="text" name="pesquisar" class="pesquisar" placeholder="Pesquisar" value="<?php echo htmlspecialchars($pesquisar); ?>">
+                </form>
+            </div>
+            
+            <div class='listagemTreinadores'>
+                <?php
+                $cores = ['azul', 'vermelho', 'verde', 'amarelo'];
+                if ($resultado->num_rows > 0) {
+                    while($row = $resultado->fetch_assoc()) {
+                        $inicialT = strtoupper($row['email'][0]);
+                        $corAleatoria = $cores[array_rand($cores)];
+                        
+                        echo "<a href='perfilTreinador.php?idTreinador={$row["id_pessoa"]}' class='treinador'>";
+                            echo "<div class='inicial $corAleatoria'>" . $inicialT . "</div>";
+                            echo "<p>" . $row["email"] . "</p>";
+                        echo "</a>";
+                    }
+                } else {
+                    echo "Nenhum resultado encontrado.";
+                }
+                ?>
+            </div>
         </div>
-
     </div>
-
-
 </body>
 </html>
