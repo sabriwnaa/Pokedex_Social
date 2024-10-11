@@ -14,16 +14,14 @@ if ($_SESSION['id'] == $id_pessoa) {
 
 $db = new mysqli("localhost", "root", "", "pokemons_dataset");
 
-// Busca o email da pessoa
 $emailQuery = "SELECT email FROM pessoa WHERE id_pessoa = ?";
 $emailStmt = $db->prepare($emailQuery);
 $emailStmt->bind_param("i", $id_pessoa);
 $emailStmt->execute();
 $emailResult = $emailStmt->get_result();
 $pessoa = $emailResult->fetch_assoc();
-$email_pessoa = $pessoa['email']; // Armazena o email
+$email_pessoa = $pessoa['email']; 
 
-// Busca os Pokémons da coleção da pessoa
 $query = "SELECT p.* FROM pokemon p 
            JOIN pessoa_pokemon pp 
           ON p.Pokedex_number = pp.pokedex_number 
@@ -78,7 +76,7 @@ $pokemonCount = $resultado->num_rows; // Conta quantos Pokémons foram encontrad
                             } ?>
                         </div>
                     <?php } ?>
-                <?php } else { // Se não houver Pokémons ?>
+                <?php } else { ?>
                     <h2>Este usuário ainda não tem Pokémons em sua coleção.</h2>
                 <?php } ?>
             </div>
@@ -88,10 +86,9 @@ $pokemonCount = $resultado->num_rows; // Conta quantos Pokémons foram encontrad
     </div>
 
     <?php
-    // Fecha a conexão
-    $emailStmt->close(); // Fecha a consulta de email
-    $stmt->close(); // Fecha a consulta de Pokémon
-    $db->close(); // Fecha a conexão com o banco de dados
-    ?>
+    $emailStmt->close(); 
+     $stmt->close(); 
+     $db->close(); 
+      ?>
 </body>
 </html>

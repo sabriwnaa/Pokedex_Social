@@ -9,11 +9,9 @@ $id_pessoa = $_SESSION['id'];
 
 $db = new mysqli("localhost", "root", "", "pokemons_dataset");
 
-// Parâmetros de ordenação
-$sort_column = isset($_GET['sort_column']) ? $_GET['sort_column'] : 'Attack';
+$sort_column = isset($_GET['sort_column']) ? $_GET['sort_column'] : 'Name'; // Ordenação por nome por padrão
 $sort_order = isset($_GET['sort_order']) ? $_GET['sort_order'] : 'ASC';
 
-// Modificação da query para incluir a ordenação
 $query = "SELECT * FROM pokemon p 
           WHERE p.Pokedex_number NOT IN ( 
           SELECT pp.pokedex_number 
@@ -25,7 +23,6 @@ $stmt = $db->prepare($query);
 $stmt->bind_param("i", $id_pessoa);
 $stmt->execute();
 $resultado = $stmt->get_result();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -39,20 +36,13 @@ $resultado = $stmt->get_result();
 <body>
     <div class='container'>
 
-        <?php
-        include 'header.php'; // Inclui o cabeçalho
-        ?>
-
-        
-
+        <?php include 'header.php'; ?>
 
         <div class='main'>
-            
             <div class='cabecalho'>
+                <h2>Pokémons fora da sua coleção</h2>
 
-            <h2>Pokemóns fora da sua coleção</h2>
-
-            <div class="dropdown">
+                <div class="dropdown">
                     <button class="botaoVermelho">Ordenar Pokémons</button>
                     <div class="dropdown-content">
                         <a href="?sort_column=Attack&sort_order=ASC">Ordenar Ataque Crescente</a>
@@ -61,33 +51,24 @@ $resultado = $stmt->get_result();
                         <a href="?sort_column=Defense&sort_order=DESC">Ordenar Defesa Decrescente</a>
                     </div>
                 </div>
-
             </div>
-                
 
             <div class='listagem'>
                 <?php while ($pokemon = $resultado->fetch_assoc()) { ?>
                     <div class='pokemon'>
-                        
-                    <h2><?php echo $pokemon['Name']; ?></h2>
+                        <h2><?php echo $pokemon['Name']; ?></h2>
                         <div class='informacoes'>
-                        <p><strong>Ataque:</strong> <?php echo $pokemon['Attack']; ?></p>
-                        <p><strong>Defesa:</strong> <?php echo $pokemon['Defense']; ?></p>
-                        <p><strong>Número da Pokedex:</strong> <?php echo $pokemon['Pokedex_number']; ?></p>
-                        <p><strong>Tipo:</strong> <?php echo $pokemon['Type']; ?></p>
-                        <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Yes' : 'No'; ?></p>
-                        
+                            <p><strong>Ataque:</strong> <?php echo $pokemon['Attack']; ?></p>
+                            <p><strong>Defesa:</strong> <?php echo $pokemon['Defense']; ?></p>
+                            <p><strong>Número da Pokedex:</strong> <?php echo $pokemon['Pokedex_number']; ?></p>
+                            <p><strong>Tipo:</strong> <?php echo $pokemon['Type']; ?></p>
+                            <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Yes' : 'No'; ?></p>
                         </div>
-                    
-                    
                         <a class='botaoVerde' href="add_pokemon.php?pokedex_number=<?php echo $pokemon['Pokedex_number']; ?>">Adicionar pokémon</a>
-
-                       
                     </div>
                 <?php } ?>
             </div>
         </div>
-
     </div>
 </body>
 </html>

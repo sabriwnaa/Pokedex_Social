@@ -5,14 +5,11 @@
         $email = filter_var($_POST['email'], FILTER_SANITIZE_EMAIL);
         $senha = htmlspecialchars($_POST['senha']);
 
-        // Conexão com o banco de dados
         $db = new mysqli('localhost', 'root', '', 'pokemons_dataset');
 
-        // Verifica se o email é válido
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             $erro_email = "Por favor, insira um endereço de e-mail válido.";
         } else {
-            // Verifica se o email já existe no banco de dados
             $stmt = $db->prepare("SELECT email FROM pessoa WHERE email = ?");
             $stmt->bind_param("s", $email);
             $stmt->execute();
@@ -21,7 +18,6 @@
             if ($stmt->num_rows > 0) {
                 $erro_email = "Este e-mail já foi registrado. Por favor, use um e-mail diferente.";
             } else {
-                // Se o email for válido e não existir, insere o novo usuário
                 $password_hash = password_hash($_POST['senha'], PASSWORD_BCRYPT);
                 $stmt = $db->prepare("INSERT INTO pessoa (email, senha) VALUES (?, ?)");
                 $stmt->bind_param("ss", $email, $password_hash);
@@ -55,15 +51,14 @@
                 <form method='post' action='form_add_treinador.php'>
                     <h1 class='comando'>Cadastrar-se</h1>
                     <div class='insercao'>
-                        <label>E-mail:</label>
+                        <label>E-mail</label>
                         <input type='email' name='email' class='entrada' required>
                         <div class="erro">
-                            <!-- Exibe a mensagem de erro caso haja -->
                             <?php if ($erro_email) echo "<p style='color: red;'>$erro_email</p>"; ?>
                         </div>
                     </div>
                     <div class='insercao'>
-                        <label>Senha:</label>
+                        <label>Senha</label>
                         <input type='password' name='senha' class='entrada' required>
                     </div>
                     <div class='grupo_botao'>

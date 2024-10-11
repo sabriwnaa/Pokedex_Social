@@ -5,14 +5,11 @@ if (!isset($_SESSION['id'])) {
     exit;
 }
 
-// Obtém o ID da pessoa e o número da Pokedex a partir dos parâmetros GET
-$id_pessoa = $_SESSION['id']; // ID da pessoa autenticada
+$id_pessoa = $_SESSION['id']; 
 $pokedex_number = $_GET['pokedex_number'];
 
-// Conexão com o banco de dados
 $db = new mysqli("localhost", "root", "", "pokemons_dataset");
 
-// Verifica se a pessoa realmente possui o Pokémon na coleção
 $checkQuery = "SELECT * FROM pessoa_pokemon WHERE id_pessoa = ? AND pokedex_number = ?";
 $checkStmt = $db->prepare($checkQuery);
 $checkStmt->bind_param("ii", $id_pessoa, $pokedex_number);
@@ -28,7 +25,6 @@ $deleteStmt->close();
 $checkStmt->close();
 $db->close();
 
-// Redireciona de volta para o perfil da pessoa
 header("Location: perfilTreinador.php?idTreinador=" . $id_pessoa);
 exit;
 ?>

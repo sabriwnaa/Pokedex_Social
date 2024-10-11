@@ -1,4 +1,4 @@
-<?php
+<?php 
 session_start();
 if (!isset($_SESSION['id'])) {
     header('Location: restrita.php');
@@ -7,26 +7,23 @@ if (!isset($_SESSION['id'])) {
 
 $db = new mysqli("localhost", "root", "", "pokemons_dataset");
 
-// Inicializar variável de pesquisa
 $pesquisar = "";
 
-// Verificar se o campo de pesquisa foi preenchido no método POST
 if (isset($_POST['pesquisar'])) {
     $pesquisar = $_POST['pesquisar'];
-    $sql = "SELECT * FROM pessoa WHERE email LIKE '%$pesquisar%'";
+    $sql = "SELECT * FROM pessoa WHERE email LIKE '%$pesquisar%' ORDER BY email ASC"; // Ordenar por email ao pesquisar
 } else {
-    $sql = "SELECT * FROM pessoa";
+    $sql = "SELECT * FROM pessoa ORDER BY email ASC"; // Ordenar por email por padrão
 }
 
 $resultado = $db->query($sql);
 
-// Função para determinar a cor com base na letra inicial
 function getCor($letra) {
     $letra = strtoupper($letra);
     if (in_array($letra, ['A', 'B', 'C', 'D', 'E', 'F'])) return 'azul';
     if (in_array($letra, ['G', 'H', 'I', 'J', 'K', 'L'])) return 'vermelho';
     if (in_array($letra, ['M', 'N', 'O', 'P', 'Q', 'R'])) return 'verde';
-    return 'amarelo'; // Para S, T, U, V, W, X, Y, Z
+    return 'amarelo'; // S, T, U, V, W, X, Y, Z
 }
 ?>
 
@@ -41,7 +38,7 @@ function getCor($letra) {
 </head>
 <body>
     <div class='container'>
-        <?php include 'header.php'?>
+        <?php include 'header.php' ?>
        
         <div class='main'>
             <div class='containerBotao'>

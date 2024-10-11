@@ -30,12 +30,10 @@
                         <label>Senha</label>
                         <input type='password' name='senha' class='entrada' required>
                     </div>
-                    <!-- Exibir mensagem de erro -->
                     <?php
                     session_start();
                     if (isset($_SESSION['erro_login'])) {
                         echo "<p style='color: red;'>" . $_SESSION['erro_login'] . "</p>";
-                        // Limpa a mensagem de erro para não aparecer após o próximo acesso
                         unset($_SESSION['erro_login']);
                     }
                     ?>

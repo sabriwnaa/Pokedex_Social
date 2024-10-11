@@ -13,8 +13,19 @@
                 <?php 
                 $email_cabecalho = $_SESSION['email']; 
                 $inicial = strtoupper($email_cabecalho[0]);
+                $cor = 'amarelo';
+                if (in_array($inicial, ['A', 'B', 'C', 'D', 'E', 'F'])){
+                    $cor = 'azul';
+                } 
+                if (in_array($inicial, ['G', 'H', 'I', 'J', 'K', 'L'])) {
+                    $cor = 'vermelho';
+                } 
+                if (in_array($inicial, ['M', 'N', 'O', 'P', 'Q', 'R'])) {
+                    $cor = 'verde';
+                }
+
                 ?>
-                <a href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>' class='inicial azul'><?php echo $inicial; ?></a>
+                <a href='perfilTreinador.php?idTreinador=<?php echo $_SESSION['id']; ?>' class='inicial <?php echo $cor;?>'><?php echo $inicial; ?></a>
                 <p><?php echo $email_cabecalho; ?></p>
             </div>
             <a class='titulo' href='restrita.php'>A Pokedex Social</a>
