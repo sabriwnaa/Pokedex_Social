@@ -1,5 +1,4 @@
 <?php
-
 session_start();
 if (!isset($_SESSION['id'])) {
     header('Location: restrita.php');
@@ -21,6 +20,14 @@ if (isset($_POST['pesquisar'])) {
 
 $resultado = $db->query($sql);
 
+// Função para determinar a cor com base na letra inicial
+function getCor($letra) {
+    $letra = strtoupper($letra);
+    if (in_array($letra, ['A', 'B', 'C', 'D', 'E', 'F'])) return 'azul';
+    if (in_array($letra, ['G', 'H', 'I', 'J', 'K', 'L'])) return 'vermelho';
+    if (in_array($letra, ['M', 'N', 'O', 'P', 'Q', 'R'])) return 'verde';
+    return 'amarelo'; // Para S, T, U, V, W, X, Y, Z
+}
 ?>
 
 <!DOCTYPE html>
@@ -46,14 +53,13 @@ $resultado = $db->query($sql);
             
             <div class='listagemTreinadores'>
                 <?php
-                $cores = ['azul', 'vermelho', 'verde', 'amarelo'];
                 if ($resultado->num_rows > 0) {
                     while($row = $resultado->fetch_assoc()) {
                         $inicialT = strtoupper($row['email'][0]);
-                        $corAleatoria = $cores[array_rand($cores)];
+                        $cor = getCor($inicialT); // Obtém a cor com base na inicial do email
                         
                         echo "<a href='perfilTreinador.php?idTreinador={$row["id_pessoa"]}' class='treinador'>";
-                            echo "<div class='inicial $corAleatoria'>" . $inicialT . "</div>";
+                            echo "<div class='inicial $cor'>" . $inicialT . "</div>"; // Aplica a cor
                             echo "<p>" . $row["email"] . "</p>";
                         echo "</a>";
                     }
