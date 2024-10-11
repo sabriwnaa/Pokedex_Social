@@ -35,39 +35,6 @@ $resultado = $stmt->get_result();
     <title>A Pokedex Social</title>
     <link rel="stylesheet" type="text/css" href="style.css" />
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
-    <style>
-        .dropdown {
-            position: relative;
-            display: inline-block;
-        }
-
-        .dropdown-content {
-            display: none;
-            position: absolute;
-            background-color: #f9f9f9;
-            box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-            z-index: 1;
-        }
-
-        .dropdown-content a {
-            color: black;
-            padding: 12px 16px;
-            text-decoration: none;
-            display: block;
-        }
-
-        .dropdown-content a:hover {
-            background-color: #f1f1f1;
-        }
-
-        .dropdown:hover .dropdown-content {
-            display: block;
-        }
-
-        .dropdown:hover .dropbtn {
-            background-color: #3e8e41;
-        }
-    </style>
 </head>
 <body>
     <div class='container'>
@@ -80,8 +47,12 @@ $resultado = $stmt->get_result();
 
         <div class='main'>
             
-                <div class="dropdown">
-                    <button class="dropbtn">Ordenar Pokémons</button>
+            <div class='cabecalho'>
+
+            <h2>Pokemóns fora da sua coleção</h2>
+
+            <div class="dropdown">
+                    <button class="botaoVermelho">Ordenar Pokémons</button>
                     <div class="dropdown-content">
                         <a href="?sort_column=Attack&sort_order=ASC">Ordenar Ataque Crescente</a>
                         <a href="?sort_column=Attack&sort_order=DESC">Ordenar Ataque Decrescente</a>
@@ -90,17 +61,27 @@ $resultado = $stmt->get_result();
                     </div>
                 </div>
 
+            </div>
+                
+
             <div class='listagem'>
                 <?php while ($pokemon = $resultado->fetch_assoc()) { ?>
                     <div class='pokemon'>
-                        <h2><?php echo $pokemon['Name']; ?></h2>
+                        
+                    <h2><?php echo $pokemon['Name']; ?></h2>
+                        <div class='informacoes'>
                         <p><strong>Ataque:</strong> <?php echo $pokemon['Attack']; ?></p>
                         <p><strong>Defesa:</strong> <?php echo $pokemon['Defense']; ?></p>
                         <p><strong>Número da Pokedex:</strong> <?php echo $pokemon['Pokedex_number']; ?></p>
                         <p><strong>Tipo:</strong> <?php echo $pokemon['Type']; ?></p>
                         <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Yes' : 'No'; ?></p>
-                        <a href="add_pokemon.php?pokedex_number=<?php echo $pokemon['Pokedex_number']; ?>">Adicionar Pokemon à minha coleção</a>
+                        
+                        </div>
+                    
+                    
+                        <a class='botaoAmarelo' href="add_pokemon.php?pokedex_number=<?php echo $pokemon['Pokedex_number']; ?>">Adicionar pokémon</a>
 
+                       
                     </div>
                 <?php } ?>
             </div>

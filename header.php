@@ -18,9 +18,9 @@
                 <p><?php echo $email_cabecalho; ?></p>
             </div>
             <a class='titulo' href='restrita.php'>A Pokedex Social</a>
-            <a class='botaoAmarelo' href='todos_treinadores.php'>Todos os treinadores</a>
+            <a class='botaoVerde' href='todos_treinadores.php'>Todos os treinadores</a>
             
-            <a class='botaoVermelho' href='logout.php'>Sair</a>
+            <a class='botaoAmarelo' href='logout.php'>Sair</a>
         </div>
     
 </body>
