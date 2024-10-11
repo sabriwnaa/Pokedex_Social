@@ -38,12 +38,13 @@ $resultado = $stmt->get_result();
 </head>
 <body>
     <div class='container'>
-        <div class='header'>
+
         <?php
         include 'header.php'; // Inclui o cabeçalho
         ?>
 
-        </div>
+        
+
 
         <div class='main'>
             

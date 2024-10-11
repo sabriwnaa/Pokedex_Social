@@ -46,15 +46,18 @@ $pokemonCount = $resultado->num_rows; // Conta quantos Pokémons foram encontrad
 </head>
 <body>
     <div class='container'>
-        <div class='header'>
             <?php include 'header.php'; // Inclui o cabeçalho ?>
-        </div>
+   
 
         <div class='main'>
-            <?php if($isMyProfile){
-                echo "<h2>Meu perfil</h2>";
-            } ?>
-            <h2><?php echo ($email_pessoa); ?></h2>
+            <div class='containerBotao'>
+                <?php if($isMyProfile){
+                    echo "<h3>Meu perfil</h3>";
+                } ?>
+                <h2><?php echo ($email_pessoa); ?></h2>
+                
+            </div>
+            
             <h1>Coleção de Pokémons</h1>
 
             <div class='listagem'>
@@ -62,13 +65,16 @@ $pokemonCount = $resultado->num_rows; // Conta quantos Pokémons foram encontrad
                     <?php while ($pokemon = $resultado->fetch_assoc()) { ?>
                         <div class='pokemon'>
                             <h2><?php echo htmlspecialchars($pokemon['Name']); ?></h2>
-                            <p><strong>Ataque:</strong> <?php echo htmlspecialchars($pokemon['Attack']); ?></p>
-                            <p><strong>Defesa:</strong> <?php echo htmlspecialchars($pokemon['Defense']); ?></p>
-                            <p><strong>Número da Pokedex:</strong> <?php echo htmlspecialchars($pokemon['Pokedex_number']); ?></p>
-                            <p><strong>Tipo:</strong> <?php echo htmlspecialchars($pokemon['Type']); ?></p>
-                            <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Sim' : 'Não'; ?></p>
+                            <div class='informacoes'>
+                                <p><strong>Ataque:</strong> <?php echo htmlspecialchars($pokemon['Attack']); ?></p>
+                                <p><strong>Defesa:</strong> <?php echo htmlspecialchars($pokemon['Defense']); ?></p>
+                                <p><strong>Número da Pokedex:</strong> <?php echo htmlspecialchars($pokemon['Pokedex_number']); ?></p>
+                                <p><strong>Tipo:</strong> <?php echo htmlspecialchars($pokemon['Type']); ?></p>
+                                <p><strong>Legendário:</strong> <?php echo $pokemon['Is_legendary'] ? 'Sim' : 'Não'; ?></p>
+                            </div>
+                            
                             <?php if($isMyProfile){
-                                echo "<a href='tirarPokemon.php?pokedex_number={$pokemon["Pokedex_number"]}'>Excluir Pokemon da minha coleção</a>";
+                                echo "<a class='botaoVermelho' href='tirarPokemon.php?pokedex_number={$pokemon["Pokedex_number"]}'>Retirar pokémon</a>";
                             } ?>
                         </div>
                     <?php } ?>
@@ -79,9 +85,6 @@ $pokemonCount = $resultado->num_rows; // Conta quantos Pokémons foram encontrad
             
         </div>
 
-        <div class='footer'>
-            <!-- Você pode adicionar conteúdo para o rodapé aqui -->
-        </div>
     </div>
 
     <?php
