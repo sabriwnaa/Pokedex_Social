@@ -34,7 +34,7 @@
                     </div>
                     <div class='grupo_botao'>
                         <input type='submit' name='botao' class='botaoVermelho' value='Entrar'>
-                        <a class='botaoAmarelo' href='form_add_treinador.php'>Cadastre-se</a>
+                        <a  href='form_add_treinador.php'>Cadastre-se</a>
                     </div>
                     
                 
