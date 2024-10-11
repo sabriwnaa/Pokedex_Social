@@ -123,7 +123,6 @@ header{
     font-size: 40px;
 }
 
-/* Header */
 .header {
     width: 100%;
     padding: 20px;
@@ -179,9 +178,8 @@ header{
 .cabecalho{
     display: flex;
     align-items: center;
-    justify-content: center;
-    gap: 60%;
-    margin-top: 20px;
+    justify-content:space-between;
+    margin: 20px 40px 0px 40px;
 }
 
 

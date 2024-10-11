@@ -79,7 +79,7 @@ $resultado = $stmt->get_result();
                         </div>
                     
                     
-                        <a class='botaoAmarelo' href="add_pokemon.php?pokedex_number=<?php echo $pokemon['Pokedex_number']; ?>">Adicionar pokémon</a>
+                        <a class='botaoVerde' href="add_pokemon.php?pokedex_number=<?php echo $pokemon['Pokedex_number']; ?>">Adicionar pokémon</a>
 
                        
                     </div>

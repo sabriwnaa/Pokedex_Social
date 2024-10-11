@@ -16,33 +16,37 @@
         
         <div class='borda'>
             <div class='containerElementos'>
-            <div class='bolinha'></div><div class='bolinha'></div>
-          
+                <div class='bolinha'></div><div class='bolinha'></div>
             </div>
-          <div class='box'>
-            
+
+            <div class='box'>
                 <form action='login.php' method='post'>
                     <h2 class='comando'>Entre na sua conta</h2>
                     <div class='insercao'>
                         <label>E-mail</label>
-                        <input type='text' name='email' class='entrada' require>
-                    
+                        <input type='email' name='email' class='entrada' required>
                     </div>
                     <div class='insercao'>
                         <label>Senha</label>
-                        <input type='password' name='senha' class='entrada' require>
+                        <input type='password' name='senha' class='entrada' required>
                     </div>
+                    <!-- Exibir mensagem de erro -->
+                    <?php
+                    session_start();
+                    if (isset($_SESSION['erro_login'])) {
+                        echo "<p style='color: red;'>" . $_SESSION['erro_login'] . "</p>";
+                        // Limpa a mensagem de erro para não aparecer após o próximo acesso
+                        unset($_SESSION['erro_login']);
+                    }
+                    ?>
                     <div class='grupo_botao'>
                         <input type='submit' name='botao' class='botaoVermelho' value='Entrar'>
-                        <a  href='form_add_treinador.php'>Cadastre-se</a>
+                        <a href='form_add_treinador.php'>Cadastre-se</a>
                     </div>
-                    
-                
                 </form>
             </div>
         </div>
         
-
         <div class='footer'>
             <h3>Sabrina Hahn Melo, Gabriel Klafke Teixeira e Ana Ariel Avila Escobar - 3TI - Programação III</h3>
         </div>
