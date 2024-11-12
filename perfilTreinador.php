@@ -28,7 +28,7 @@ while ($pokemon = $resultado->fetch_assoc()) {
 }
 $pokemonCount = count($pokemonList);
 
-//email do treinador
+//email
 $emailQuery = "SELECT email FROM pessoa WHERE id_pessoa = ?";
 $emailStmt = $db->prepare($emailQuery);
 $emailStmt->bind_param("i", $id_pessoa);
@@ -37,7 +37,7 @@ $emailResult = $emailStmt->get_result();
 $pessoa = $emailResult->fetch_assoc();
 $email_pessoa = $pessoa['email'];
 
-//cálculo para média de ataque sem dividir divisão por zero
+//cálculo média de ataque sem dividir divisão por zero
 $mediaAtaque = $pokemonCount > 0 ? $soma / $pokemonCount : 0; //net
 
 $emailStmt->close();
